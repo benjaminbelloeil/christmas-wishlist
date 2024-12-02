@@ -13,8 +13,14 @@ export default function App() {
   const [isChildMode, setIsChildMode] = useState(false);
   
   useEffect(() => {
-    const savedWishes = Cookies.get('wishes');
-    if (savedWishes) setWishes(JSON.parse(savedWishes));
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedWishes = urlParams.get('wishes');
+    if (sharedWishes) {
+      setWishes(JSON.parse(sharedWishes));
+    } else {
+      const savedWishes = Cookies.get('wishes');
+      if (savedWishes) setWishes(JSON.parse(savedWishes));
+    }
   }, []);
 
   const addWish = (wish) => {
