@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Cookies from 'js-cookie';
-import { FaGift } from 'react-icons/fa';
+import { FaChild, FaUser } from 'react-icons/fa';
 import WishCard from './components/WishCard';
 import AddWishForm from './components/AddWishForm';
+import Snowfall from 'react-snowfall';
+import ChristmasCountdown from './components/ChristmasCountdown';
 
 export default function App() {
   const [wishes, setWishes] = useState([]);
   const [copied, setCopied] = useState(false);
-
+  const [isChildMode, setIsChildMode] = useState(false);
+  
   useEffect(() => {
     const savedWishes = Cookies.get('wishes');
     if (savedWishes) setWishes(JSON.parse(savedWishes));
@@ -34,25 +37,43 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-holiday-pine via-[#1F2F37] to-holiday-pine/90 p-8 font-sans">
-      <motion.h1 
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="text-5xl font-light text-white text-center mb-12 flex items-center justify-center gap-3"
-      >
-        <span className="tracking-wide">My Wishlist</span>
-        <motion.span
-          animate={{ rotate: [0, -10, 10, 0] }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+    <div className="min-h-screen bg-gradient-to-br from-holiday-pine via-[#1F2F37] to-holiday-pine/90 p-4 pb-16 font-sans relative">
+      <Snowfall
+        snowflakeCount={200}
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+        }}
+      />
+      
+      <div className="flex justify-end mb-2">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsChildMode(!isChildMode)}
+          className="bg-holiday-red text-white px-4 py-2 rounded-full hover:bg-holiday-red/90 transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2"
         >
-          <FaGift className="text-4xl opacity-90" />
-        </motion.span>
-      </motion.h1>
+          {isChildMode ? (
+            <>
+              <FaChild className="text-lg" />
+              Adult Mode
+            </>
+          ) : (
+            <>
+              <FaUser className="text-lg" />
+              Kid Mode
+            </>
+          )}
+        </motion.button>
+      </div>
 
-      <AddWishForm onAdd={addWish} />
+      <ChristmasCountdown />
+
+      <AddWishForm onAdd={addWish} isChildMode={isChildMode} />
 
       <motion.div 
-        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+        className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
         layout
       >
         {wishes.map(wish => (
@@ -60,12 +81,12 @@ export default function App() {
         ))}
       </motion.div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white/5 backdrop-blur-md p-4 text-center border-t border-white/10">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/5 backdrop-blur-md p-2 text-center border-t border-white/10">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={shareList}
-          className="bg-holiday-gold text-holiday-pine px-6 py-2.5 rounded-full hover:bg-holiday-gold/90 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="bg-holiday-red text-white px-4 py-2 rounded-full hover:bg-holiday-red/90 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           {copied ? '✨ Link Copied!' : '🎄 Share Wishlist'}
         </motion.button>

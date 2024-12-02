@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this to change the overscroll color */
+body {
+  background-color: #1F2F37; /* Match this color to your app's background */
+  overscroll-behavior: contain;
+}
