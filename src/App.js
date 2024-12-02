@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Cookies from 'js-cookie';
-import { FaChild, FaUser } from 'react-icons/fa';
+import { FaChild, FaUser, FaGlobeAmericas } from 'react-icons/fa';
 import WishCard from './components/WishCard';
 import AddWishForm from './components/AddWishForm';
 import Snowfall from 'react-snowfall';
 import ChristmasCountdown from './components/ChristmasCountdown';
 
 export default function App() {
+  const { t, i18n } = useTranslation();
   const [wishes, setWishes] = useState([]);
   const [copied, setCopied] = useState(false);
   const [isChildMode, setIsChildMode] = useState(false);
-  
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const sharedWishes = urlParams.get('wishes');
@@ -42,6 +44,10 @@ export default function App() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-holiday-pine via-[#1F2F37] to-holiday-pine/90 p-4 pb-16 font-sans relative">
       <Snowfall
@@ -52,8 +58,26 @@ export default function App() {
           height: '100vh',
         }}
       />
-      
-      <div className="flex justify-end mb-2">
+
+      <div className="flex justify-end gap-2 mb-2">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => changeLanguage('en')}
+          className="bg-holiday-red/80 text-white px-4 py-2 rounded-full hover:bg-holiday-red/90 transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2"
+        >
+          <FaGlobeAmericas className="text-lg" />
+          English
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => changeLanguage('es')}
+          className="bg-holiday-red/80 text-white px-4 py-2 rounded-full hover:bg-holiday-red/90 transition-all duration-300 shadow-lg hover:shadow-xl font-medium flex items-center gap-2"
+        >
+          <FaGlobeAmericas className="text-lg" />
+          Español
+        </motion.button>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -63,12 +87,12 @@ export default function App() {
           {isChildMode ? (
             <>
               <FaChild className="text-lg" />
-              Adult Mode
+              {t('adult_mode')}
             </>
           ) : (
             <>
               <FaUser className="text-lg" />
-              Kid Mode
+              {t('child_mode')}
             </>
           )}
         </motion.button>
@@ -94,7 +118,7 @@ export default function App() {
           onClick={shareList}
           className="bg-holiday-red text-white px-4 py-2 rounded-full hover:bg-holiday-red/90 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          {copied ? '✨ Link Copied!' : '🎄 Share Wishlist'}
+          {copied ? t('link_copied') : t('share_wishlist')}
         </motion.button>
       </div>
     </div>

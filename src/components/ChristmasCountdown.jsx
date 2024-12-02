@@ -1,9 +1,10 @@
-// ChristmasCountdown.jsx
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaSleigh } from 'react-icons/fa';
 
 export default function ChristmasCountdown() {
+  const { t } = useTranslation();
   const [timeUntilChristmas, setTimeUntilChristmas] = useState({
     days: 0,
     hours: 0,
@@ -62,14 +63,14 @@ export default function ChristmasCountdown() {
       </motion.div>
       
       <div className="text-2xl md:text-4xl font-bold text-holiday-snow mb-2 flex justify-center gap-2">
-        <TimeUnit value={timeUntilChristmas.days} unit="Days" />
-        <TimeUnit value={timeUntilChristmas.hours} unit="Hours" />
-        <TimeUnit value={timeUntilChristmas.minutes} unit="Minutes" />
-        <TimeUnit value={timeUntilChristmas.seconds} unit="Seconds" />
+        <TimeUnit value={timeUntilChristmas.days} unit={t('days')} />
+        <TimeUnit value={timeUntilChristmas.hours} unit={t('hours')} />
+        <TimeUnit value={timeUntilChristmas.minutes} unit={t('minutes')} />
+        <TimeUnit value={timeUntilChristmas.seconds} unit={t('seconds')} />
       </div>
       
       <div className="text-holiday-snow/80 text-sm md:text-lg">
-        Countdown to Christmas 🎄
+        {t('countdown_to_christmas')}
       </div>
     </motion.div>
   );

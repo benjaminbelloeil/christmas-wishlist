@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
 
 export default function WishCard({ wish, onRemove }) {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       layout
@@ -41,7 +44,7 @@ export default function WishCard({ wish, onRemove }) {
             rel="noopener noreferrer"
             className="text-holiday-red hover:text-holiday-red/80 transition-colors duration-300 inline-flex items-center gap-2 text-sm font-medium"
           >
-            View Item <FaExternalLinkAlt className="text-xs" />
+            {t('view_item')} <FaExternalLinkAlt className="text-xs" />
           </motion.a>
         )}
       </div>
