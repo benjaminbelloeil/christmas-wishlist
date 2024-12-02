@@ -1,6 +1,46 @@
-# Getting Started with Create React App
+# Christmas Wishlist
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Christmas Wishlist application built with React, Tailwind CSS, and Framer Motion. Users can add, view, and share their Christmas wishes.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Available Scripts](#available-scripts)
+- [Learn More](#learn-more)
+- [License](#license)
+
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-username/christmas-wishlist.git
+    cd christmas-wishlist
+    ```
+
+2. Install the dependencies:
+    ```sh
+    npm install
+    ```
+
+## Usage
+
+1. Start the development server:
+    ```sh
+    npm start
+    ```
+
+2. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## Features
+
+- Add wishes with details such as name, description, price, link, and image.
+- View a countdown to Christmas.
+- Toggle between child mode and adult mode.
+- Share your wishlist via a generated URL.
+- Responsive design with Tailwind CSS.
+- Smooth animations with Framer Motion.
 
 ## Available Scripts
 
@@ -37,8 +77,6 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -68,3 +106,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
