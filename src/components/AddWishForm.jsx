@@ -46,7 +46,7 @@ export default function AddWishForm({ onAdd, isChildMode }) {
               <img src={preview} alt="Preview" className="h-full w-full object-contain rounded-lg" />
             ) : (
               <p className="text-holiday-frost text-center text-lg">
-                {isDragActive ? ('drop_picture') : isChildMode ? ('add_picture_child') : ('add_picture')}
+                {isDragActive ? '📸 Drop picture here!' : isChildMode ? '📸 Add a picture of your wish!' : 'Drag & drop an image or click to select'}
               </p>
             )}
           </div>
@@ -54,7 +54,7 @@ export default function AddWishForm({ onAdd, isChildMode }) {
 
         <input
           className={`w-full rounded-lg bg-holiday-snow/90 border-0 focus:ring-2 focus:ring-holiday-red/50 px-4 ${isChildMode ? 'py-4 text-lg' : 'py-3'} text-gray-800 placeholder-gray-500`}
-          placeholder={isChildMode ? ('what_do_you_want') : ('whats_your_wish')}
+          placeholder={isChildMode ? "🎁 What do you want?" : "✨ What's your wish?"}
           value={formData.name}
           onChange={(e) => setFormData({...formData, name: e.target.value})}
           required
@@ -64,7 +64,7 @@ export default function AddWishForm({ onAdd, isChildMode }) {
           <>
             <textarea
               className="w-full rounded-lg bg-holiday-snow/90 border-0 focus:ring-2 focus:ring-holiday-red/50 px-4 py-3 text-gray-800 placeholder-gray-500"
-              placeholder={('add_details')}
+              placeholder="Add some details..."
               value={formData.description}
               onChange={(e) => setFormData({...formData, description: e.target.value})}
               rows="2"
@@ -74,14 +74,14 @@ export default function AddWishForm({ onAdd, isChildMode }) {
               <input
                 type="number"
                 className="rounded-lg bg-holiday-snow/90 border-0 focus:ring-2 focus:ring-holiday-red/50 px-4 py-3 text-gray-800 placeholder-gray-500"
-                placeholder={('price')}
+                placeholder="Price"
                 value={formData.price}
                 onChange={(e) => setFormData({...formData, price: e.target.value})}
                 required
               />
               <input
                 className="rounded-lg bg-holiday-snow/90 border-0 focus:ring-2 focus:ring-holiday-red/50 px-4 py-3 text-gray-800 placeholder-gray-500"
-                placeholder={('link_to_item')}
+                placeholder="Link to item"
                 value={formData.link}
                 onChange={(e) => setFormData({...formData, link: e.target.value})}
                 required
@@ -96,7 +96,7 @@ export default function AddWishForm({ onAdd, isChildMode }) {
           whileTap={{ scale: 0.98 }}
           className={`w-full bg-holiday-red text-white px-6 ${isChildMode ? 'py-4 text-lg' : 'py-3'} rounded-full hover:bg-holiday-red/90 transition-all duration-300 shadow-lg hover:shadow-xl font-medium`}
         >
-          {isChildMode ? ('add_my_wish') : ('add_wish')}
+          {isChildMode ? '🎁 Add My Wish!' : 'Add to Wishlist ✨'}
         </motion.button>
       </div>
     </motion.form>

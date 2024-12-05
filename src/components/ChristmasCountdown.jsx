@@ -61,14 +61,14 @@ export default function ChristmasCountdown() {
       </motion.div>
       
       <div className="text-2xl md:text-4xl font-bold text-holiday-snow mb-2 flex justify-center gap-2">
-        <TimeUnit value={timeUntilChristmas.days} unit={('days')} />
-        <TimeUnit value={timeUntilChristmas.hours} unit={('hours')} />
-        <TimeUnit value={timeUntilChristmas.minutes} unit={('minutes')} />
-        <TimeUnit value={timeUntilChristmas.seconds} unit={('seconds')} />
+        <TimeUnit value={timeUntilChristmas.days} unit="Days" />
+        <TimeUnit value={timeUntilChristmas.hours} unit="Hours" />
+        <TimeUnit value={timeUntilChristmas.minutes} unit="Minutes" />
+        <TimeUnit value={timeUntilChristmas.seconds} unit="Seconds" />
       </div>
       
       <div className="text-holiday-snow/80 text-sm md:text-lg">
-        {('countdown_to_christmas')}
+        Countdown to Christmas 🎄
       </div>
     </motion.div>
   );

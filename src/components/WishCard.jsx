@@ -41,7 +41,7 @@ export default function WishCard({ wish, onRemove }) {
             rel="noopener noreferrer"
             className="text-holiday-red hover:text-holiday-red/80 transition-colors duration-300 inline-flex items-center gap-2 text-sm font-medium"
           >
-            {('view_item')} <FaExternalLinkAlt className="text-xs" />
+            View Item <FaExternalLinkAlt className="text-xs" />
           </motion.a>
         )}
       </div>

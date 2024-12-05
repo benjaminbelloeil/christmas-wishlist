@@ -63,12 +63,12 @@ export default function App() {
           {isChildMode ? (
             <>
               <FaUser className="text-lg" />
-              {('Adult Mode')}
+              Adult Mode
             </>
           ) : (
             <>
               <FaChild className="text-lg" />
-              {('Kid Mode')}
+              Kid Mode
             </>
           )}
         </motion.button>
@@ -94,7 +94,7 @@ export default function App() {
           onClick={shareList}
           className="bg-holiday-red text-white px-4 py-2 rounded-full hover:bg-holiday-red/90 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          {copied ? ('link_copied') : ('share_wishlist')}
+          {copied ? '✨ Link Copied!' : '🎄 Share Wishlist'}
         </motion.button>
       </div>
     </div>
